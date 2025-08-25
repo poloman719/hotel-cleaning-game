@@ -75,10 +75,13 @@ public class Timer : MonoBehaviour
         {
             hTracker = 0f;
 
-            hoursPassed++;
-
             ///Set next hour in list
+            hoursPassed++;
             hourTimes[hoursPassed - 1].SetActive(false);
+           
+            if (hoursPassed / hourTimes.Count == 1)
+                hoursPassed = 0;
+
             hourTimes[hoursPassed].SetActive(true);
         }
 
