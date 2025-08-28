@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableLamp : MonoBehaviour, IInteractable
 {
-    public GameObject lampLight;
+    public List<GameObject> lampLights;
     bool switchState = false;
 
     public void Interact()
@@ -19,11 +19,17 @@ public class TableLamp : MonoBehaviour, IInteractable
 
     void TurnOn()
     {
-        lampLight.SetActive(true);
+        for (int i = 0; i < lampLights.Count; i++)
+        {
+            lampLights[i].SetActive(true);
+        }
     }
 
     void TurnOff()
     {
-        lampLight.SetActive(false);
+        for (int i = 0; i < lampLights.Count; i++)
+        {
+            lampLights[i].SetActive(false);
+        }
     }
 }
