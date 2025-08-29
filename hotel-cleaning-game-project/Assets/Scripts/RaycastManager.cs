@@ -33,13 +33,13 @@ public class RaycastManager : MonoBehaviour
 
             if (objectDetected.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                reticleAnim.SetBool("detectInteractable", true);
+                reticleAnim.SetBool("detecting", true);
                 if (Input.GetMouseButtonDown(0))
                     interactable.Interact();
             }
 
             else
-                reticleAnim.SetBool("detectInteractable", false);
+                reticleAnim.SetBool("detecting", false);
         }
     }
 }
