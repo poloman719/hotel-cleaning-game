@@ -28,7 +28,7 @@ public class PlayerInventory : MonoBehaviour
         //         return;
         //     }
         // }
-        Debug.Log("adding " + tool.toolType);
+
         if (tools.Count == inventorySlots.Count) return;
         Image slotImage = inventorySlots[tools.Count].GetComponent<Image>();
         slotImage.sprite = tool.icon;
