@@ -38,6 +38,11 @@ public class RaycastManager : MonoBehaviour
                     interactable.Interact();
             }
 
+            else if (objectDetected.CompareTag("Item"))
+            {
+                reticleAnim.SetBool("detecting", true);
+            }
+
             else
                 reticleAnim.SetBool("detecting", false);
         }

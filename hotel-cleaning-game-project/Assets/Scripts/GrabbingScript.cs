@@ -15,10 +15,10 @@ public class GrabbingScript : MonoBehaviour
     public float rotationSpeed;
     public GameObject room;
 
-    void Start()
+    void Start() 
     {
         rm = GetComponent<RaycastManager>();
-        room = GameObject.Find("Objects");
+        room = GameObject.Find("Objects/Furniture");
     }
 
     void Update()
