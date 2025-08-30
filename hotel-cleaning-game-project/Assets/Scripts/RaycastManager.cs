@@ -46,6 +46,9 @@ public class RaycastManager : MonoBehaviour
             else
                 reticleAnim.SetBool("detecting", false);
         }
+
+        else
+            reticleAnim.SetBool("detecting", false);
     }
 }
 
