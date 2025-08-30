@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6991208977744050303}
+  - component: {fileID: 5105938840360731220}
   m_Layer: 0
   m_Name: Curtains
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5105938840360731220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035162254520631962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048e024a07b1ab348834c8b1187e43b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCurtains: {fileID: 816067966733233867}
+  closedCurtains: {fileID: 3013198398497694973}
 --- !u!1001 &545543224362046362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: curtains 8.2.2 (Open)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5148817236446094103, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -187,6 +206,110 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
   m_PrefabInstance: {fileID: 545543224362046362}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &302008979128991038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8961359253771211100, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 545543224362046362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1127409445078312524
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302008979128991038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7196802604745430461, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &7747897997967995001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302008979128991038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
+--- !u!1 &816067966733233867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 545543224362046362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6756137154829050015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6507901977716847365, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 545543224362046362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8161963796450983790
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756137154829050015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6416302070336371891, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &4780104879494752894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756137154829050015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
+--- !u!1 &8193566692055773865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8513859187771203891, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 545543224362046362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6207891047262153739
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8193566692055773865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &2342745935495658343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8193566692055773865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
 --- !u!1001 &2670755711875946924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,8 +387,112 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!1 &1704970564780496812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 2670755711875946924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4145729220478557103
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704970564780496812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &2783689220179787460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704970564780496812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
 --- !u!4 &2493542108314172999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
   m_PrefabInstance: {fileID: 2670755711875946924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3013198398497694973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 2670755711875946924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4278688797257843926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7029948723529949830, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 2670755711875946924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6353890345780454461
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278688797257843926}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &211065113802372591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278688797257843926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
+--- !u!1 &7089839904128055995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5148817236446094103, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+  m_PrefabInstance: {fileID: 2670755711875946924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1712635841747773901
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089839904128055995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4579454407841743219, guid: c3a82eb5bd3d0bc4b9137d49385fcdc1, type: 3}
+--- !u!114 &7427578747364724220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089839904128055995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1bafd355cea844ac26c19565ed069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInteractable: {fileID: 4035162254520631962}
+  scriptName: Curtains
