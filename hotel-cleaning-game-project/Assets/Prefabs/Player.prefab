@@ -103,7 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 938462107132849329}
   maxDist: 5
+  layermask:
+    serializedVersion: 2
+    m_Bits: 63
   objectDetected: {fileID: 0}
+  detecting: 0
 --- !u!114 &9207004302944602029
 MonoBehaviour:
   m_ObjectHideFlags: 0

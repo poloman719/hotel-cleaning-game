@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RaycastManager : MonoBehaviour
 {
-    // variables
-    // Camera
     public GameObject mainCam;
     public float maxDist;
+    public LayerMask layermask;
     public GameObject objectDetected = null;
+    public bool detecting = false;
 
     private Animator reticleAnim;
+    private TextMeshProUGUI text;
 
     void Start()
     {
         reticleAnim = GameObject.Find("Reticle").GetComponent<Animator>();
+        text = GameObject.Find("InteractionText").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -27,28 +30,36 @@ public class RaycastManager : MonoBehaviour
 
         // Detect Item
         RaycastHit itemDetected;
-        bool detecting = false;
+        bool activeReticle = false;
 
-        if (Physics.Raycast(interactRay, out itemDetected, maxDist))
+        if (Physics.Raycast(interactRay, out itemDetected, maxDist, layermask))
         {
+            detecting = true;
             objectDetected = itemDetected.collider.gameObject;
 
             if (objectDetected.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                detecting = true;
+                activeReticle = true;
                 if (Input.GetMouseButtonDown(0))
                     interactable.Interact();
             }
-
             else if (objectDetected.CompareTag("Item") || objectDetected.CompareTag("Tool"))
             {
-                detecting = true;
+                activeReticle = true;
+            }
+            else
+            {
+                //For when ray hits something unrelevant
+                text.text = "";
             }
         }
+        else
+        {
+            //For when ray hits nothing
+            detecting = false;
+            text.text = "";
+        }
 
-        reticleAnim.SetBool("detecting", detecting);
+        reticleAnim.SetBool("detecting", activeReticle);
     }
 }
-
-// Step 1: Draw Line
-// Step 2:
