@@ -27,28 +27,26 @@ public class RaycastManager : MonoBehaviour
 
         // Detect Item
         RaycastHit itemDetected;
+        bool detecting = false;
+
         if (Physics.Raycast(interactRay, out itemDetected, maxDist))
         {
             objectDetected = itemDetected.collider.gameObject;
 
             if (objectDetected.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                reticleAnim.SetBool("detecting", true);
+                detecting = true;
                 if (Input.GetMouseButtonDown(0))
                     interactable.Interact();
             }
 
-            else if (objectDetected.CompareTag("Item"))
+            else if (objectDetected.CompareTag("Item") || objectDetected.CompareTag("Tool"))
             {
-                reticleAnim.SetBool("detecting", true);
+                detecting = true;
             }
-
-            else
-                reticleAnim.SetBool("detecting", false);
         }
 
-        else
-            reticleAnim.SetBool("detecting", false);
+        reticleAnim.SetBool("detecting", detecting);
     }
 }
 

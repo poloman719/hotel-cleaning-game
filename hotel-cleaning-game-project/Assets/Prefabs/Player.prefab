@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2742214429091479534}
   - component: {fileID: 9207004302944602029}
   - component: {fileID: 7923566104416804061}
-  - component: {fileID: 5810238602813472963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -137,20 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureTag: Furniture
---- !u!114 &5810238602813472963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938462105584821361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d832c0c41371cf346a80bf402cc91f10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toolTag: Tool
-  InventoryObj: {fileID: 0}
 --- !u!1 &938462107132849329
 GameObject:
   m_ObjectHideFlags: 0

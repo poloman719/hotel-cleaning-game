@@ -50,7 +50,19 @@ public class PlayerInventory : MonoBehaviour
         equippedIdx = idx;
         equippedTool.toolObject.SetActive(true);
         equippedTool.toolObject.transform.position = toolRefPoint.transform.position;
+
+        NoCollision();
+    }
+
+    void NoCollision()
+    {
         equippedTool.toolObject.layer = LayerMask.NameToLayer("NoCollision");
+
+        if (equippedTool.toolObject.transform.childCount == 0) return;
+        foreach (Transform child in equippedTool.toolObject.transform)
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("NoCollision");
+        }
     }
 
     void UnequipTool()
