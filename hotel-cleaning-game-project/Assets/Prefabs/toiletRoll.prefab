@@ -129,5 +129,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: Item
-  displayText: Pickup ToiletRoll (E)
+  displayText: Pickup toilet roll (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}

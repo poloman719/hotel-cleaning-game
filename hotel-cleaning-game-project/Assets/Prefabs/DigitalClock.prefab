@@ -5672,7 +5672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: Item
-  displayText: Pickup DigitalClock (E)
+  displayText: Pickup clock (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
 --- !u!1 &5614748979609687777
 GameObject:

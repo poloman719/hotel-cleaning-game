@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> inventorySlotsBG;
     [SerializeField] private List<GameObject> inventorySlots;
     // see InventoryObject class implementation in InventoryObject.cs
     [SerializeField] private List<InventoryObject> objects;
     public InventoryObject equippedObject = null;
-    private int equippedIdx = -1;
+    [SerializeField] private int equippedIdx = -1;
     public GameObject equippedObj;
     public GameObject toolRefPoint;
     public float tolerance = 0.1f;
@@ -26,16 +27,25 @@ public class PlayerInventory : MonoBehaviour
 
     void Equip(int idx)
     {
-        if (idx >= objects.Count) return;
-        Debug.Log("equipping " + idx);
+        if (idx < 0 || idx >= inventorySlotsBG.Count) return;
+        if (equippedIdx == idx) return;
+
         if (equippedIdx > -1)
         {
-            inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            objects[equippedIdx].obj.SetActive(false);
+            inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+
+            //equippedIdx is in bounds check
+            if (equippedObj != null && equippedIdx < objects.Count && objects[equippedIdx].obj != null)
+                objects[equippedIdx].obj.SetActive(false);
         }
-        inventorySlots[idx].GetComponent<Image>().color = new Color(0f, 1f, 0f, 1f);
-        equippedObject = objects[idx];
+
         equippedIdx = idx;
+        inventorySlotsBG[idx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
+
+        if (idx >= objects.Count) return;
+
+        Debug.Log("equipping " + idx);
+        equippedObject = objects[idx];
         equippedObject.obj.SetActive(true);
         equippedObject.obj.transform.position = toolRefPoint.transform.position;
 
@@ -55,10 +65,15 @@ public class PlayerInventory : MonoBehaviour
 
     void Unequip()
     {
-        inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
         objects[equippedIdx].obj.SetActive(false);
         equippedObject = null;
         equippedIdx = -1;
+    }
+
+    public void DropObject()
+    {
+
     }
 
     public void RemoveObject()
@@ -82,7 +97,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // handle holding of tool/object
-        if (equippedIdx > -1)
+        if (equippedIdx > -1 && equippedObject.obj != null)
         {
             equippedObj = equippedObject.obj;
             EquippedLocation();
