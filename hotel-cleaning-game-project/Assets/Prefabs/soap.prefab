@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5705710749765426848}
   - component: {fileID: 8199528102608742291}
   - component: {fileID: 7767917818626727275}
+  - component: {fileID: -6030969875085554027}
   m_Layer: 0
   m_Name: soap
   m_TagString: Item
@@ -114,3 +115,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14544125, y: 0.0722745, z: 0.218}
   m_Center: {x: 0, y: 0.036135, z: 0}
+--- !u!114 &-6030969875085554027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065853653297332085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd95e9d7d69e0b478e516ae3fc52164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: Item
+  displayText: Pickup Soap (E)
+  objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}

@@ -5,108 +5,58 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [Header("HourTimes")]
     public List<GameObject> hourTimes;
-    [SerializeField] private float hourBreaks;
-    public float hTracker;
-    [SerializeField] private int hoursPassed = 0;
-
-    [Header("MinuteTimes")]
     public List<GameObject> minuteTimes;
-    [SerializeField] private float minuteBreaks;
-    float minTracker;
-    [SerializeField] private int minPassed = 0;
-
-    // Max Time; Ideal is increment of 15 mins
-    public float maxTime;
-    // Current Time
-    [SerializeField] private float timeLeft = 0;
-    // Time Start
-    private bool timerStart = true;
-
-    // Timer (for seconds tracking or whatever you wanna call it)
-    // private float timerSec = 0;
-
-    // Loss
-    public bool gameOver = false;
+    private TimeManager timeManager;
 
     void Start()
     {
-        timeLeft = maxTime;
-
-        ///9-5 job, so 8 hours
-        hourBreaks = maxTime / 8f;
-
-        ///alarm clock increments by 10 mins
-        minuteBreaks = maxTime / 48f;
+        timeManager = FindObjectOfType<TimeManager>();
     }
-
 
     void Update()
     {
-        hTracker += Time.deltaTime;
-        minTracker += Time.deltaTime;
-
-        CalculateDisplay();
-
-        if (timerStart)
-        {
-            //timerSec += Time.deltaTime;
-            timeLeft -= Time.deltaTime;
-        }
-
-        /*if (timerSec > 1)
-        {
-            timerSec -= 1;
-            Debug.Log(Math.Floor(timeLeft));
-        }*/
-
-        if (timeLeft <= 0)
-        {
-            timerStart = false;
-            gameOver = true;
-            Debug.Log("You lost lmao");
-        }
+        hourChange();
+        minChange();
     }
 
-    void CalculateDisplay()
+    void hourChange()
     {
-        if (hTracker >= hourBreaks)
+        if (timeManager.hoursPassed == 0)
         {
-            hTracker = 0f;
-
-            ///Set next hour in list
-            hoursPassed++;
-            hourTimes[hoursPassed - 1].SetActive(false);
-           
-            if (hoursPassed / hourTimes.Count == 1)
-                hoursPassed = 0;
-
-            hourTimes[hoursPassed].SetActive(true);
+            hourTimes[timeManager.hoursPassed].SetActive(true);
+            for (int i = 1; i < hourTimes.Count; i++)
+            {
+                hourTimes[i].SetActive(false);
+            }
+            return;
         }
 
-        if (minTracker >= minuteBreaks)
-        {
-            minTracker = 0f;
+        hourTimes[timeManager.hoursPassed - 1].SetActive(false);
 
-            ///Set next minute in list
-            minPassed++;
-            minuteTimes[minPassed - 1].SetActive(false);
+        if (timeManager.hoursPassed / hourTimes.Count == 1)
+            timeManager.hoursPassed = 0;
 
-            if (minPassed / 6 == 1)
-                minPassed = 0;
-
-            minuteTimes[minPassed].SetActive(true);
-        }
+        hourTimes[timeManager.hoursPassed].SetActive(true);
     }
 
-
-    [ContextMenu("Start Timer")]
-    void StartTimer()
+    void minChange()
     {
-        gameOver = false;
-        timeLeft = maxTime;
-        timerStart = true;
-        Debug.Log("Timer Started");
+        if (timeManager.minPassed == 0)
+        {
+            minuteTimes[timeManager.minPassed].SetActive(true);
+            for (int i = 1; i < minuteTimes.Count; i++)
+            {
+                minuteTimes[i].SetActive(false);
+            }
+            return;
+        }
+
+        minuteTimes[timeManager.minPassed - 1].SetActive(false);
+
+        if (timeManager.minPassed / minuteTimes.Count == 1)
+            timeManager.minPassed = 0;
+
+        minuteTimes[timeManager.minPassed].SetActive(true);
     }
 }

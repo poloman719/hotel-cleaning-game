@@ -40,7 +40,7 @@ public class RaycastManager : MonoBehaviour
             if (objectDetected.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 activeReticle = true;
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetKeyDown(KeyCode.F))
                     interactable.Interact();
             }
             else if (objectDetected.CompareTag("Item") || objectDetected.CompareTag("Tool"))

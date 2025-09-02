@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// NOTE: This script might need to be attached to all pickable objects and renamed to "PickupObject"
-public class PickupTool : MonoBehaviour
+public class PickupObject : MonoBehaviour
 {
-    public string toolType;
+    public string objectType;
     public string displayText;
-    public Sprite toolIcon;
+    public Sprite objectIcon;
     private PlayerInventory playerInventory;
     private RaycastManager raycastManager;
     private TextMeshProUGUI text;
@@ -32,8 +31,8 @@ public class PickupTool : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            InventoryTool newTool = new InventoryTool(toolType, gameObject, toolIcon);
-            playerInventory.AddObject(newTool);
+            InventoryObject newObject = new InventoryObject(objectType, gameObject, objectIcon);
+            playerInventory.AddObject(newObject);
             gameObject.SetActive(false);
             text.text = "";
             inInventory = true;

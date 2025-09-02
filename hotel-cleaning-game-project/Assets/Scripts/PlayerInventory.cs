@@ -6,70 +6,58 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<GameObject> inventorySlots;
-    // see InventoryTool class implementation in InventoryTool.cs
-    [SerializeField] private List<InventoryTool> tools;
-    public InventoryTool equippedTool = null;
+    // see InventoryObject class implementation in InventoryObject.cs
+    [SerializeField] private List<InventoryObject> objects;
+    public InventoryObject equippedObject = null;
     private int equippedIdx = -1;
+    public GameObject equippedObj;
     public GameObject toolRefPoint;
     public float tolerance = 0.1f;
     public float pullForce = 10f;
 
-    /// <summary>
-    /// this function will have an "image parameter"; If a grab object is stored, the function will grab the object's icon as a parameter and insert it to the inventory slot
-    /// </summary>
-    public void AddObject(InventoryTool tool)
+    public void AddObject(InventoryObject invObject)
     {
-        // for (int i = 0; i < inventorySlots.Count; i++)
-        // {
-        //     if (inventorySlots[i].GetComponent<Image>().sprite == null)
-        //     {
-        //         inventorySlots[i].GetComponent<Image>().sprite = objectIcon;
-        //         inventorySlots[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-        //         return;
-        //     }
-        // }
-
-        if (tools.Count == inventorySlots.Count) return;
-        Image slotImage = inventorySlots[tools.Count].GetComponent<Image>();
-        slotImage.sprite = tool.icon;
+        if (objects.Count == inventorySlots.Count) return;
+        Image slotImage = inventorySlots[objects.Count].GetComponent<Image>();
+        slotImage.sprite = invObject.icon;
         slotImage.color = new Color(1f, 1f, 1f, 1f);
-        tools.Add(tool);
+        objects.Add(invObject);
     }
 
-    void EquipTool(int idx)
+    void Equip(int idx)
     {
-        if (idx >= tools.Count) return;
-        Debug.Log("equipping tool " + idx);
+        if (idx >= objects.Count) return;
+        Debug.Log("equipping " + idx);
         if (equippedIdx > -1)
         {
             inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            tools[equippedIdx].toolObject.SetActive(false);
+            objects[equippedIdx].obj.SetActive(false);
         }
         inventorySlots[idx].GetComponent<Image>().color = new Color(0f, 1f, 0f, 1f);
-        equippedTool = tools[idx];
+        equippedObject = objects[idx];
         equippedIdx = idx;
-        equippedTool.toolObject.SetActive(true);
-        equippedTool.toolObject.transform.position = toolRefPoint.transform.position;
+        equippedObject.obj.SetActive(true);
+        equippedObject.obj.transform.position = toolRefPoint.transform.position;
 
         NoCollision();
     }
 
     void NoCollision()
     {
-        equippedTool.toolObject.layer = LayerMask.NameToLayer("NoCollision");
+        equippedObject.obj.layer = LayerMask.NameToLayer("NoCollision");
 
-        if (equippedTool.toolObject.transform.childCount == 0) return;
-        foreach (Transform child in equippedTool.toolObject.transform)
+        if (equippedObject.obj.transform.childCount == 0) return;
+        foreach (Transform child in equippedObject.obj.transform)
         {
             child.gameObject.layer = LayerMask.NameToLayer("NoCollision");
         }
     }
 
-    void UnequipTool()
+    void Unequip()
     {
         inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-        tools[equippedIdx].toolObject.SetActive(false);
-        equippedTool = null;
+        objects[equippedIdx].obj.SetActive(false);
+        equippedObject = null;
         equippedIdx = -1;
     }
 
@@ -80,44 +68,36 @@ public class PlayerInventory : MonoBehaviour
 
     void Update()
     {
-        // check for user input
-        if (equippedIdx != 0 && Input.GetKey(KeyCode.Alpha1))
+        for (int i = 0; i <= 4; i++)
         {
-            EquipTool(0);
-        }
-        if (equippedIdx != 1 && Input.GetKey(KeyCode.Alpha2))
-        {
-            EquipTool(1);
-        }
-        if (equippedIdx != 2 && Input.GetKey(KeyCode.Alpha3))
-        {
-            EquipTool(2);
-        }
-        if (equippedIdx != 3 && Input.GetKey(KeyCode.Alpha4))
-        {
-            EquipTool(3);
-        }
-        if (equippedIdx != 4 && Input.GetKey(KeyCode.Alpha5))
-        {
-            EquipTool(4);
-        }
-        if (equippedIdx > -1 && Input.GetKey(KeyCode.Q))
-        {
-            UnequipTool();
+            if (equippedIdx != i && Input.GetKey(KeyCode.Alpha1 + i))
+            {
+                Equip(i);
+            }
         }
 
-        // handle holding of tool
+        if (equippedIdx > -1 && Input.GetKey(KeyCode.Q))
+        {
+            Unequip();
+        }
+
+        // handle holding of tool/object
         if (equippedIdx > -1)
         {
-            GameObject equippedObj = equippedTool.toolObject;
-            if (Vector3.Distance(equippedObj.transform.position, toolRefPoint.transform.position) > tolerance)
-            {
-                equippedObj.GetComponent<Rigidbody>().velocity = (toolRefPoint.transform.position - equippedObj.transform.position) * Vector3.Distance(equippedObj.transform.position, toolRefPoint.transform.position) * pullForce;
-            }
-            else
-            {
-                equippedObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            }
+            equippedObj = equippedObject.obj;
+            EquippedLocation();
+        }
+    }
+
+    void EquippedLocation()
+    {
+        if (Vector3.Distance(equippedObj.transform.position, toolRefPoint.transform.position) > tolerance)
+        {
+            equippedObj.GetComponent<Rigidbody>().velocity = (toolRefPoint.transform.position - equippedObj.transform.position) * Vector3.Distance(equippedObj.transform.position, toolRefPoint.transform.position) * pullForce;
+        }
+        else
+        {
+            equippedObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
 }

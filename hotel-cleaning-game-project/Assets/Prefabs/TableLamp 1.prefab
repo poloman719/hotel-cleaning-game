@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 3992086254691234457}
   - component: {fileID: 7542272531014296274}
   - component: {fileID: 8094392479621790508}
+  - component: {fileID: -1765778523495317935}
   m_Layer: 0
   m_Name: TableLamp 1
   m_TagString: Item
@@ -364,6 +365,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1439173, y: 0.1430857, z: 0.008656777}
   m_Center: {x: 0.004423251, y: -0.002649928, z: -0.2657751}
+--- !u!114 &-1765778523495317935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319990394569325726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd95e9d7d69e0b478e516ae3fc52164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: Item
+  displayText: Pickup Lamp (E)
+  objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
 --- !u!1 &7647788724344569257
 GameObject:
   m_ObjectHideFlags: 0
