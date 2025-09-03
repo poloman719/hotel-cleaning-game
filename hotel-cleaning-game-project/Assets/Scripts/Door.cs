@@ -8,10 +8,13 @@ public class Door : MonoBehaviour, IInteractable
     Animator anim;
 
     bool ready = true;
+    bool roomDoor = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        if (gameObject.name.Contains("RoomDoor"))
+            roomDoor = true;
     }
 
     public void Interact()

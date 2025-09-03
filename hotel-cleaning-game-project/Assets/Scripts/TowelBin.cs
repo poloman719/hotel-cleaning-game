@@ -6,7 +6,10 @@ using TMPro;
 public class TowelBin : MonoBehaviour
 {
     public string towelText = "Drop dirt towel (E)";
-    public string noTowelText = "[You don't have any dirty towels.]";
+
+    //should the player need to hold a dirty towel and then it can drop or the drop can happen as long as the dirty towel is in inventory?
+    public string noTowelText = "[You don't have any dirty towels.]"; 
+    public Transform spawnTransform;
 
     private PlayerInventory playerInventory;
     private RaycastManager raycastManager;
@@ -29,18 +32,24 @@ public class TowelBin : MonoBehaviour
         interactText.text = towelText;
         interactText.color = new Color(1f, 1f, 1f, 0.5f);
 
-        if (playerInventory.equippedObj != null && playerInventory.equippedObj.name == "Dirty Towel")
+        if (playerInventory.equippedObj != null && playerInventory.equippedObj.name.Contains("Dirty Towel"))
             interactText.color = new Color(1f, 1f, 1f, 1f);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (playerInventory.equippedObj == null || playerInventory.equippedObj.name != "Dirty Towel")
+            if (playerInventory.equippedObj == null || !playerInventory.equippedObj.name.Contains("Dirty Towel"))
             {
                 failedText.GetComponent<TextMeshProUGUI>().text = noTowelText;
                 failedText.GetComponent<Animator>().SetBool("flash", true);
             }
-            //playerInventory.AddObject();
-            //gameObject.SetActive(false);
+            else if (playerInventory.equippedObj.name == "Dirty Towel")
+            {
+                GameObject dirtyTowel = playerInventory.equippedObj;
+                dirtyTowel.layer = 0;
+                Instantiate(dirtyTowel, spawnTransform.position, Quaternion.identity);
+                playerInventory.RemoveObject();
+                interactText.color = new Color(1f, 1f, 1f, 1f);
+            }
         }
     }
 

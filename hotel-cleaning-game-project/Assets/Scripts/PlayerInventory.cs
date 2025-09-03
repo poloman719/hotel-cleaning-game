@@ -42,7 +42,12 @@ public class PlayerInventory : MonoBehaviour
         equippedIdx = idx;
         inventorySlotsBG[idx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
 
-        if (idx >= objects.Count) return;
+        if (idx >= objects.Count)
+        {
+            equippedObject = null;
+            equippedObj = null;
+            return;
+        }
 
         Debug.Log("equipping " + idx);
         equippedObject = objects[idx];
@@ -78,7 +83,13 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveObject()
     {
-
+        inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+        inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+        objects.RemoveAt(equippedIdx);
+        equippedObject = null;
+        equippedIdx = -1;
+        Destroy(equippedObj);
+        equippedObj = null;
     }
 
     void Update()
@@ -97,7 +108,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // handle holding of tool/object
-        if (equippedIdx > -1 && equippedObject.obj != null)
+        if (equippedIdx > -1 && equippedObject != null && equippedObject.obj != null)
         {
             equippedObj = equippedObject.obj;
             EquippedLocation();
