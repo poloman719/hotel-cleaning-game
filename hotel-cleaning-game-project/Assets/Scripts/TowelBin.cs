@@ -7,7 +7,7 @@ public class TowelBin : MonoBehaviour
 {
     public string towelText = "Drop dirt towel (E)";
 
-    //should the player need to hold a dirty towel and then it can drop or the drop can happen as long as the dirty towel is in inventory?
+    //[You're not holding the proper equipment.] if the player tries to clean something that requires a tool
     public string noTowelText = "[You don't have any dirty towels.]"; 
     public Transform spawnTransform;
 
