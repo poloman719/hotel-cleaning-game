@@ -320,6 +320,78 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
+  - day: 0
+    defaultNormAnomalies: []
+    defaultEerieAnomalies: []
+    defaultRoomAnomalies: []
+    defaultNormCount: 0
+    allowEerie: 0
+    allowRoom: 0
+    roomOverrides:
+    - roomNumber: 0
+      customNormAnomalies: []
+      customEerieAnomalies: []
+      customRoomAnomalies: []
 --- !u!1001 &157026921
 PrefabInstance:
   m_ObjectHideFlags: 0

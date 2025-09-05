@@ -30,7 +30,7 @@ public class RoomManager : MonoBehaviour
     #region AnomalyDay + AnomalyRoom Configurations
 
     [System.Serializable]
-    public class AnomalyDayConfig
+    public class AnomalyDayConfig //default room anomaly spawning algorithm for a specifc day
     {
         public int day;
         public List<NormAnomalGroup> defaultNormAnomalies; //i.e. dirty towels, crooked paintings, missing soap, etc
@@ -43,7 +43,7 @@ public class RoomManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class RoomAnomalyOverride
+    public class RoomAnomalyOverride //rooms that differ from the typical room spawning for a specific day
     {
         public int roomNumber;
         public List<NormAnomalGroup> customNormAnomalies;
@@ -187,7 +187,7 @@ public class RoomManager : MonoBehaviour
 
     //Calculates totalChance by adding all chances.
     //Generates random number between 0 - totalChance.
-    //Adds each normAnomalGroup's chances one-by-one, and once that (aka runningNum) surpasses the random number, return the last normAnomalGroup whos chance was added.
+    //Adds each normAnomalGroup's chances one-by-one, and once that (aka runningNum) surpasses the random number, add the last normAnomalGroup whos chance was added.
     //Repeats process int amount of times
     public List<NormAnomalGroup> GetRandomNormAnomalyGroups(List<NormAnomalGroup> source, int amount)
     {
