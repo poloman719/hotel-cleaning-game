@@ -29,6 +29,7 @@ public class GrabbingScript : MonoBehaviour
             heldObject = rm.objectDetected;
             heldObject.GetComponent<Rigidbody>().useGravity = false;
             heldObject.GetComponent<Rigidbody>().freezeRotation = true;
+            heldObject.GetComponent<PickupObject>().BeingHeld(true);
             holding = true;
         }
         if (holding)
@@ -81,11 +82,12 @@ public class GrabbingScript : MonoBehaviour
             // Check for left click hold
             if (!Input.GetMouseButton(0))
             {
-                heldObject.GetComponent<Rigidbody>().useGravity = true; GetComponent<Rigidbody>().freezeRotation = true;
+                heldObject.GetComponent<Rigidbody>().useGravity = true; // GetComponent<Rigidbody>().freezeRotation = true;
                 heldObject.GetComponent<Rigidbody>().freezeRotation = false;
                 heldObject.transform.SetParent(room.transform);
                 player.GetComponent<PlayerMovement>().rotationLocked = false;
                 holding = false;
+                heldObject.GetComponent<PickupObject>().BeingHeld(false);
             }
         }
     }

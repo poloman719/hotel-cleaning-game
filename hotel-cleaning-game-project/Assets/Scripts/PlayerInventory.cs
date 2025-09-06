@@ -7,11 +7,12 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<GameObject> inventorySlotsBG;
     [SerializeField] private List<GameObject> inventorySlots;
-    // see InventoryObject class implementation in InventoryObject.cs
-    [SerializeField] private List<InventoryObject> objects;
+    /*[HideInInspector]*/ public List<InventoryObject> objects;
+
     public InventoryObject equippedObject = null;
     [SerializeField] private int equippedIdx = -1;
     public GameObject equippedObj;
+
     public GameObject toolRefPoint;
     public float tolerance = 0.1f;
     public float pullForce = 10f;
@@ -76,12 +77,12 @@ public class PlayerInventory : MonoBehaviour
         equippedIdx = -1;
     }
 
-    public void DropObject()
+    public void DropEquippedObject()
     {
 
     }
 
-    public void RemoveObject()
+    public void RemoveEquippedObject()
     {
         inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
@@ -90,6 +91,43 @@ public class PlayerInventory : MonoBehaviour
         equippedIdx = -1;
         Destroy(equippedObj);
         equippedObj = null;
+    }
+
+    public void RemoveMultiObjects(List<InventoryObject> multiObjects)
+    {
+        List<int> indicesToRemove = new List<int>();
+
+        //Collect matching indices
+        for (int i = 0; i < objects.Count; i++)
+        {
+            if (objects[i] == null) continue;
+
+            foreach (InventoryObject n in multiObjects)
+            {
+                if (objects[i] == n)
+                {
+                    indicesToRemove.Add(i);
+                    break; // Prevent adding same index multiple times
+                }
+            }
+        }
+
+        //Remove from highest to lowest index
+        indicesToRemove.Sort((a, b) => b.CompareTo(a));
+
+        foreach (int i in indicesToRemove)
+        {
+            if (i == equippedIdx)
+            {
+                RemoveEquippedObject();
+            }
+            else
+            {
+                inventorySlots[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+                inventorySlotsBG[i].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+                objects.RemoveAt(i);
+            }
+        }
     }
 
     void Update()

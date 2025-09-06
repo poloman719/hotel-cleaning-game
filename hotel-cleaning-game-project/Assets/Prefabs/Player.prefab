@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2742214429091479534}
   - component: {fileID: 9207004302944602029}
   - component: {fileID: 7923566104416804061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,6 +37,7 @@ Transform:
   - {fileID: 938462107132849330}
   - {fileID: 5115164664358140271}
   - {fileID: 1559514176707164078}
+  - {fileID: 7502242516162404392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,7 +106,7 @@ MonoBehaviour:
   maxDist: 5
   layermask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 447
   objectDetected: {fileID: 0}
   detecting: 0
 --- !u!114 &9207004302944602029
@@ -152,7 +153,7 @@ GameObject:
   - component: {fileID: 938462107132849331}
   - component: {fileID: 938462107132849328}
   - component: {fileID: 938462107132849333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -260,6 +261,52 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &2448259367919544480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7502242516162404392}
+  - component: {fileID: 4008930079078054468}
+  m_Layer: 0
+  m_Name: TriggerForHeld
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7502242516162404392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448259367919544480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 938462105584821367}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4008930079078054468
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448259367919544480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6274297575092192028
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +319,7 @@ GameObject:
   - component: {fileID: 2578518521251964008}
   - component: {fileID: 7313555802009969813}
   - component: {fileID: 5840799517742347970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ref Point (Objects)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +418,7 @@ GameObject:
   - component: {fileID: 1559514176707164078}
   - component: {fileID: 1212444727414804769}
   - component: {fileID: 1143887762825975922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5115164664358140271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +532,7 @@ GameObject:
   - component: {fileID: 7944550541946455568}
   - component: {fileID: 7683448860262926209}
   - component: {fileID: 8558061040931124322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ref Point (Tools)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

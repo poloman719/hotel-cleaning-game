@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PickupObject : MonoBehaviour
+public class PickupObject : MonoBehaviour //this script is to be attached to all pickable items and tools
 {
     public string objectType;
     public string displayText;
@@ -12,6 +12,9 @@ public class PickupObject : MonoBehaviour
     private RaycastManager raycastManager;
     private TextMeshProUGUI text;
 
+    private LayerMask objLayer;
+
+    [HideInInspector] public bool beingHeld = false;
     bool inInventory = false;
 
     void Start()
@@ -19,6 +22,7 @@ public class PickupObject : MonoBehaviour
         playerInventory = FindObjectOfType<PlayerInventory>();
         raycastManager = FindObjectOfType<RaycastManager>();
         text = GameObject.Find("InteractionText").GetComponent<TextMeshProUGUI>();
+        objLayer = gameObject.layer;
     }
 
     void Update()
@@ -48,5 +52,19 @@ public class PickupObject : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void BeingHeld(bool isHeld) //Only for items
+    {
+        beingHeld = isHeld;
+        if (isHeld) gameObject.layer = LayerMask.NameToLayer("Holding"); //no else statement because reset layer happens in OnTriggerExit
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && beingHeld == false)
+        {
+            gameObject.layer = objLayer;
+        }
     }
 }
