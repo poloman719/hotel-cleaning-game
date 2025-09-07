@@ -1071,7 +1071,9 @@ MonoBehaviour:
   objectType: Item
   displayText: Pickup dirty towel (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
+  objLayer: 0
   beingHeld: 0
+  inInventory: 0
 --- !u!54 &317370667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3335,7 +3337,9 @@ MonoBehaviour:
   objectType: Tool
   displayText: Pickup sweeper (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
+  objLayer: 0
   beingHeld: 0
+  inInventory: 0
 --- !u!1 &1395680590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,13 +4183,29 @@ MonoBehaviour:
   - {fileID: 1644347865}
   - {fileID: 1705221188}
   - {fileID: 465511372}
-  objects: []
+  objects:
+  - objectType: 
+    obj: {fileID: 0}
+    icon: {fileID: 0}
+  - objectType: 
+    obj: {fileID: 0}
+    icon: {fileID: 0}
+  - objectType: 
+    obj: {fileID: 0}
+    icon: {fileID: 0}
+  - objectType: 
+    obj: {fileID: 0}
+    icon: {fileID: 0}
+  - objectType: 
+    obj: {fileID: 0}
+    icon: {fileID: 0}
   equippedObject:
     objectType: 
     obj: {fileID: 0}
     icon: {fileID: 0}
   equippedIdx: -1
   equippedObj: {fileID: 0}
+  pickupObject: {fileID: 0}
   toolRefPoint: {fileID: 664371633}
   tolerance: 0.1
   pullForce: 10
@@ -4634,7 +4654,9 @@ MonoBehaviour:
   objectType: Item
   displayText: Pickup dirty towel (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
+  objLayer: 0
   beingHeld: 0
+  inInventory: 0
 --- !u!54 &2046338421
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7195,7 +7217,9 @@ MonoBehaviour:
   objectType: Tool
   displayText: Pickup sponge (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
+  objLayer: 0
   beingHeld: 0
+  inInventory: 0
 --- !u!54 &8894691112949775000
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -7,50 +7,68 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<GameObject> inventorySlotsBG;
     [SerializeField] private List<GameObject> inventorySlots;
-    /*[HideInInspector]*/ public List<InventoryObject> objects;
+    [System.NonSerialized] public InventoryObject[] objects;
 
     public InventoryObject equippedObject = null;
     [SerializeField] private int equippedIdx = -1;
     public GameObject equippedObj;
+    public PickupObject pickupObject = null;
 
     public GameObject toolRefPoint;
     public float tolerance = 0.1f;
     public float pullForce = 10f;
 
+    void Awake()
+    {
+        objects = new InventoryObject[5];
+    }
+
     public void AddObject(InventoryObject invObject)
     {
-        if (objects.Count == inventorySlots.Count) return;
-        Image slotImage = inventorySlots[objects.Count].GetComponent<Image>();
-        slotImage.sprite = invObject.icon;
-        slotImage.color = new Color(1f, 1f, 1f, 1f);
-        objects.Add(invObject);
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i] == null)
+            {
+                objects[i] = invObject;
+                Image slotImage = inventorySlots[i].GetComponent<Image>();
+                slotImage.sprite = invObject.icon;
+                slotImage.color = new Color(1f, 1f, 1f, 1f);
+                return;
+            }
+        }
+
+        Debug.Log("Inventory full");
     }
 
     void Equip(int idx)
     {
         if (idx < 0 || idx >= inventorySlotsBG.Count) return;
-        if (equippedIdx == idx) return;
+        if (equippedIdx == idx)
+        {
+            Unequip();
+            return;
+        }
 
-        if (equippedIdx > -1)
+        if (equippedIdx > -1 && equippedIdx < inventorySlotsBG.Count)
         {
             inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
 
             //equippedIdx is in bounds check
-            if (equippedObj != null && equippedIdx < objects.Count && objects[equippedIdx].obj != null)
+            if (equippedObj != null && equippedIdx < objects.Length && objects[equippedIdx].obj != null)
                 objects[equippedIdx].obj.SetActive(false);
         }
 
         equippedIdx = idx;
         inventorySlotsBG[idx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
 
-        if (idx >= objects.Count)
+        if (idx >= objects.Length || objects[idx] == null)
         {
             equippedObject = null;
             equippedObj = null;
+            pickupObject = null;
             return;
         }
 
-        Debug.Log("equipping " + idx);
         equippedObject = objects[idx];
         equippedObject.obj.SetActive(true);
         equippedObject.obj.transform.position = toolRefPoint.transform.position;
@@ -58,8 +76,14 @@ public class PlayerInventory : MonoBehaviour
         NoCollision();
     }
 
-    void NoCollision()
+    void NoCollision() //need to take into account pickUpObject beingHeld == true
     {
+        if (pickupObject != null)
+        {
+            Debug.Log("called");
+            pickupObject.beingHeld = true;
+        }
+
         equippedObject.obj.layer = LayerMask.NameToLayer("NoCollision");
 
         if (equippedObject.obj.transform.childCount == 0) return;
@@ -72,22 +96,47 @@ public class PlayerInventory : MonoBehaviour
     void Unequip()
     {
         inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
-        objects[equippedIdx].obj.SetActive(false);
-        equippedObject = null;
+
+        if (objects[equippedIdx] != null && equippedObject != null)
+        {
+            objects[equippedIdx].obj.SetActive(false);
+            equippedObject = null;
+        }
         equippedIdx = -1;
     }
 
     public void DropEquippedObject()
     {
+        if (equippedObj == null)
+        {
+            Debug.Log("can't drop");
+            return;
+        }
 
+        if (pickupObject == null)
+        {
+            Debug.Log("no pickupObject script");
+            return;
+        }
+
+        pickupObject.beingHeld = false;
+        inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+        inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+        objects[equippedIdx] = null;
+        equippedObject = null;
+
+        equippedObj.layer = pickupObject.objLayer;
+        equippedObj.GetComponent<PickupObject>().inInventory = false;
+        equippedObj = null;
     }
 
     public void RemoveEquippedObject()
     {
         inventorySlots[equippedIdx].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         inventorySlotsBG[equippedIdx].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
-        objects.RemoveAt(equippedIdx);
+        objects[equippedIdx] = null;
         equippedObject = null;
+
         equippedIdx = -1;
         Destroy(equippedObj);
         equippedObj = null;
@@ -98,7 +147,7 @@ public class PlayerInventory : MonoBehaviour
         List<int> indicesToRemove = new List<int>();
 
         //Collect matching indices
-        for (int i = 0; i < objects.Count; i++)
+        for (int i = 0; i < objects.Length; i++)
         {
             if (objects[i] == null) continue;
 
@@ -125,7 +174,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 inventorySlots[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
                 inventorySlotsBG[i].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
-                objects.RemoveAt(i);
+                objects[i] = null;
             }
         }
     }
@@ -134,21 +183,27 @@ public class PlayerInventory : MonoBehaviour
     {
         for (int i = 0; i <= 4; i++)
         {
-            if (equippedIdx != i && Input.GetKey(KeyCode.Alpha1 + i))
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 Equip(i);
             }
         }
 
-        if (equippedIdx > -1 && Input.GetKey(KeyCode.Q))
+        /*if (equippedIdx > -1 && Input.GetKey(KeyCode.Q))
         {
             Unequip();
+        }*/
+
+        if (equippedIdx > -1 && equippedIdx < objects.Length && objects[equippedIdx] != null && Input.GetKeyDown(KeyCode.Q))
+        {
+            DropEquippedObject();
         }
 
         // handle holding of tool/object
         if (equippedIdx > -1 && equippedObject != null && equippedObject.obj != null)
         {
             equippedObj = equippedObject.obj;
+            pickupObject = equippedObj.GetComponent<PickupObject>();
             EquippedLocation();
         }
     }
