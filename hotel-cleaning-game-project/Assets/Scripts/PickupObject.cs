@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PickupObject : MonoBehaviour //this script is to be attached to all pickable items and tools
 {
@@ -10,7 +9,6 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
     public Sprite objectIcon;
     private PlayerInventory playerInventory;
     private RaycastManager raycastManager;
-    private TextMeshProUGUI text;
 
     public int objLayer;
     [HideInInspector] public bool beingHeld = false;
@@ -21,26 +19,23 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
     {
         playerInventory = FindObjectOfType<PlayerInventory>();
         raycastManager = FindObjectOfType<RaycastManager>();
-        text = GameObject.Find("InteractionText").GetComponent<TextMeshProUGUI>();
         objLayer = gameObject.layer;
     }
 
-    void Update()
+    public bool CanBePickedUp()
     {
-        if (inInventory) return;
-        if (!raycastManager.detecting) return;
-        if (raycastManager.objectDetected != gameObject && !IsChildOfThis(raycastManager.objectDetected)) return;
+        if (inInventory) return false;
+        if (!raycastManager.detecting) return false;
+        if (raycastManager.objectDetected != gameObject && !IsChildOfThis(raycastManager.objectDetected)) return false;
+        return true;
+    }
 
-        text.text = displayText;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            InventoryObject newObject = new InventoryObject(objectType, gameObject, objectIcon);
-            playerInventory.AddObject(newObject);
-            gameObject.SetActive(false);
-            text.text = "";
-            inInventory = true;
-        }
+    public void Pickup()
+    {
+        InventoryObject newObject = new InventoryObject(objectType, gameObject, objectIcon);
+        playerInventory.AddObject(newObject);
+        gameObject.SetActive(false);
+        inInventory = true;
     }
 
     void FixedUpdate() //Runs before OnTriggerStay and OnTriggerExit

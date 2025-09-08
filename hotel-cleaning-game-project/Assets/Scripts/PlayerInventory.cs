@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot is selected beforehand
 {
     [SerializeField] private List<GameObject> inventorySlotsBG;
     [SerializeField] private List<GameObject> inventorySlots;

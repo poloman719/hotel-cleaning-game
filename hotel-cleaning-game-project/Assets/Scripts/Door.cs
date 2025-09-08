@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    public string interactTextOpen = "Open Door (F)";
+    public string interactTextClose = "Close Door (F)";
+
     bool switchState = false;
     Animator anim;
 
@@ -28,6 +32,14 @@ public class Door : MonoBehaviour, IInteractable
             Open();
         else
             Close();
+    }
+
+    public void DisplayInteractText(TextMeshProUGUI displayedText)
+    {
+        if (switchState)
+            displayedText.text = interactTextClose;
+        else
+            displayedText.text = interactTextOpen;
     }
 
     public void Ready()

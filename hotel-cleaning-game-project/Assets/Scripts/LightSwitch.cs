@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LightSwitch : MonoBehaviour, IInteractable
 {
+    public string interactText = "Flip Light Switch (F)";
+
     private GameObject ceilingLightPoint;
     private GameObject ceilingLightDir;
     private Animator ceilingLightAnim;
@@ -27,6 +30,11 @@ public class LightSwitch : MonoBehaviour, IInteractable
             TurnOn();
         else
             TurnOff();
+    }
+
+    public void DisplayInteractText(TextMeshProUGUI displayedText)
+    {
+        displayedText.text = interactText;
     }
 
     void TurnOn()

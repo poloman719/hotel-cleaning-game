@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour, IInteractable
 {
+    public string interactTextOpen = "Open Shower Door (F)";
+    public string interactTextClose = "Close Shower Door (F)";
+
     bool switchState = false;
     Animator anim;
 
@@ -25,6 +29,14 @@ public class SlidingDoor : MonoBehaviour, IInteractable
             Open();
         else
             Close();
+    }
+
+    public void DisplayInteractText(TextMeshProUGUI displayedText)
+    {
+        if (switchState)
+            displayedText.text = interactTextClose;
+        else
+            displayedText.text = interactTextOpen;
     }
 
     public void Ready()
