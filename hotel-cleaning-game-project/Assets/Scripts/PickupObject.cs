@@ -11,7 +11,7 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
     private RaycastManager raycastManager;
 
     public int objLayer;
-    [HideInInspector] public bool beingHeld = false;
+    /*[HideInInspector]*/ public bool beingHeld = false;
     [HideInInspector] public bool inInventory = false;
     bool isTouchingPlayer = false;
 
@@ -33,8 +33,8 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
     public void Pickup()
     {
         InventoryObject newObject = new InventoryObject(objectType, gameObject, objectIcon);
-        playerInventory.AddObject(newObject);
         gameObject.SetActive(false);
+        playerInventory.AddObject(newObject);
         inInventory = true;
     }
 
@@ -43,6 +43,10 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
         if (!isTouchingPlayer && !beingHeld)
         {
             gameObject.layer = objLayer;
+            foreach (Transform child in transform)
+            {
+                child.gameObject.layer = objLayer;
+            }
         }
 
         isTouchingPlayer = false;
@@ -78,6 +82,10 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
         if (other.CompareTag("Player") && beingHeld == false)
         {
             gameObject.layer = objLayer;
+            foreach (Transform child in transform)
+            {
+                child.gameObject.layer = objLayer;
+            }
         }
     }
 }

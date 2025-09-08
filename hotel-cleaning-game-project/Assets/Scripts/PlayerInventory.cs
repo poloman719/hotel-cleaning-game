@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,11 @@ public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot 
                 Image slotImage = inventorySlots[i].GetComponent<Image>();
                 slotImage.sprite = invObject.icon;
                 slotImage.color = new Color(1f, 1f, 1f, 1f);
+
+                if (equippedIdx == i)
+                {
+                    Equip(i, true);
+                }
                 return;
             }
         }
@@ -40,10 +46,10 @@ public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot 
         Debug.Log("Inventory full");
     }
 
-    void Equip(int idx)
+    void Equip(int idx, bool added)
     {
         if (idx < 0 || idx >= inventorySlotsBG.Count) return;
-        if (equippedIdx == idx)
+        if (equippedIdx == idx && !added)
         {
             Unequip();
             return;
@@ -69,6 +75,7 @@ public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot 
             return;
         }
 
+        Debug.Log("yo");
         equippedObject = objects[idx];
         equippedObject.obj.SetActive(true);
         equippedObject.obj.transform.position = toolRefPoint.transform.position;
@@ -76,8 +83,11 @@ public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot 
         NoCollision();
     }
 
-    void NoCollision() //need to take into account pickUpObject beingHeld == true
+    void NoCollision()
     {
+        equippedObj = equippedObject.obj;
+        pickupObject = equippedObj.GetComponent<PickupObject>();
+
         if (pickupObject != null)
         {
             Debug.Log("called");
@@ -185,7 +195,7 @@ public class PlayerInventory : MonoBehaviour //Object isnt equipped when a slot 
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                Equip(i);
+                Equip(i, false);
             }
         }
 
