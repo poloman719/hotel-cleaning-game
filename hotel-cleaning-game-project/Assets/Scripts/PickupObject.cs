@@ -19,7 +19,9 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
     {
         playerInventory = FindObjectOfType<PlayerInventory>();
         raycastManager = FindObjectOfType<RaycastManager>();
-        objLayer = gameObject.layer;
+
+        if (objLayer == 0)
+            objLayer = gameObject.layer;
     }
 
     public bool CanBePickedUp()
