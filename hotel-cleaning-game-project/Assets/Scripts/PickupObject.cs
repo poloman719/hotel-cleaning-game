@@ -29,7 +29,15 @@ public class PickupObject : MonoBehaviour //this script is to be attached to all
         if (inInventory) return false;
         if (!raycastManager.detecting) return false;
         if (raycastManager.objectDetected != gameObject && !IsChildOfThis(raycastManager.objectDetected)) return false;
-        return true;
+
+        for (int i = 0; i < playerInventory.objects.Length; i++)
+        {
+            if (playerInventory.objects[i] == null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void Pickup()
