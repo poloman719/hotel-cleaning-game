@@ -1174,6 +1174,7 @@ GameObject:
   - component: {fileID: 4229924689060095003}
   - component: {fileID: 8357912136023542129}
   - component: {fileID: 8229455007975558886}
+  - component: {fileID: 2541088718328530487}
   m_Layer: 0
   m_Name: tvRemote
   m_TagString: Untagged
@@ -1265,6 +1266,23 @@ MonoBehaviour:
   objectType: Item
   displayText: Pickup remote (E)
   objectIcon: {fileID: 21300000, guid: 1ed1957abfd3e704c85fea88ec9916a0, type: 3}
+  objLayer: 0
+  beingHeld: 0
+  inInventory: 0
+--- !u!114 &2541088718328530487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5942949645572951345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4815cd89c10e3f24e87ce1f1b154b685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextOff: Turn Off TV (F)
+  notOnText: '[The TV is already off.]'
 --- !u!1 &6131507087718703681
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,6 @@ public class SodaExplosion : MonoBehaviour
     public float upwardsModifier;
     public List<Rigidbody> sodaCans;
 
-    private void Start()
-    {
-        ExplodeCans();
-    }
     public void ExplodeCans()
     {
         float randomDisplaceX = Random.value * maxDisplacement;
