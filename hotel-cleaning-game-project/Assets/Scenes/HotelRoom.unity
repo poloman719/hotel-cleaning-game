@@ -1145,6 +1145,7 @@ Transform:
   - {fileID: 296592866}
   - {fileID: 1406194095}
   - {fileID: 87174478}
+  - {fileID: 998173252}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2250,7 +2251,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 53327383}
-  - {fileID: 998173252}
   - {fileID: 2822691714438593728}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2467,11 +2467,11 @@ Transform:
   m_GameObject: {fileID: 998173248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 100, y: 10, z: 100}
+  m_LocalScale: {x: 500, y: 10, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 871034688}
-  m_RootOrder: 1
+  m_Father: {fileID: 457777532}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999271607
 GameObject:
@@ -6291,6 +6291,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 871034688}
     m_Modifications:
+    - target: {fileID: 2502901051757064080, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2764797977896131169, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
       propertyPath: m_LocalScale.y
       value: 3.3333333
@@ -6299,13 +6303,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 3301654839325873243, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457736524537897360, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70678abc60269884fb2eb5e62b461464, type: 2}
     - target: {fileID: 7177867926685421456, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
       propertyPath: m_Name
       value: 'UnfurnishedHotelRoom '
       objectReference: {fileID: 0}
     - target: {fileID: 7554568979200693546, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7554568979200693546, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6346,6 +6358,10 @@ PrefabInstance:
     - target: {fileID: 7554568979200693546, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667619272524254899, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.268
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b6f6a5bb61b6a43aca9fd19c6fb860, type: 3}
