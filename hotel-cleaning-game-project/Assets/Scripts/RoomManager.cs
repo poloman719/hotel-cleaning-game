@@ -201,7 +201,7 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            float randomNum = Random.value * totalChance;
+            float randomNum = Random.value * totalChance; 
             float runningNum = 0f;
             foreach (NormAnomalGroup normAnomalGroup in source)
             {
