@@ -382,7 +382,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 602412507}
   m_Father: {fileID: 457777532}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,9 +403,9 @@ MonoBehaviour:
   maxDay: 7
   currentRoom: 1
   maxRoom: 20
-  defaultRoomPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  spawnPointXAmount: 0
+  defaultRoomPrefab: {fileID: 871034687}
+  spawnPoint: {fileID: 602412507}
+  spawnPointXAmount: 10
   spawnPointZAmount: 0
   anomalyDayConfigs:
   - day: 1
@@ -426,7 +427,7 @@ MonoBehaviour:
       customEerieAnomalies:
       - {fileID: 0}
       customRoomAnomalies: []
-  - day: 0
+  - day: 2
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -438,7 +439,7 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
-  - day: 0
+  - day: 3
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -450,7 +451,7 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
-  - day: 0
+  - day: 4
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -462,7 +463,7 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
-  - day: 0
+  - day: 5
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -474,7 +475,7 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
-  - day: 0
+  - day: 6
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -486,7 +487,7 @@ MonoBehaviour:
       customNormAnomalies: []
       customEerieAnomalies: []
       customRoomAnomalies: []
-  - day: 0
+  - day: 7
     defaultNormAnomalies: []
     defaultEerieAnomalies: []
     defaultRoomAnomalies: []
@@ -1545,6 +1546,37 @@ Transform:
   - {fileID: 6738450968211665848}
   m_Father: {fileID: 543450653535864450}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &602412506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602412507}
+  m_Layer: 0
+  m_Name: RoomSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &602412507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602412506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 87174478}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615542489
 GameObject:
