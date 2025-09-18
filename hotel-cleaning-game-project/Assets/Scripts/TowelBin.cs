@@ -45,7 +45,7 @@ public class TowelBin : MonoBehaviour
 
         if (dirtyTowels.Count > 0) hasDirtyTowel = true;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (!hasDirtyTowel)
             {
