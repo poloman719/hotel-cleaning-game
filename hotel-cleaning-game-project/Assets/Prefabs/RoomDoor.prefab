@@ -464,6 +464,69 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4730275408805213724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4747570974740207502}
+  - component: {fileID: 4471489114019391688}
+  - component: {fileID: 7257699066650018211}
+  m_Layer: 0
+  m_Name: DoorHandleCol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4747570974740207502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730275408805213724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 0, z: 1.22}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7651183996396250134}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4471489114019391688
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730275408805213724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7257699066650018211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730275408805213724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0735ccc403543b94e9c029cf6dfdcc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTagList: []
+  interactText: Place Tag (F)
+  cantInteractText: '[You don''t have any door tags.]'
+  roomDoorTag: {fileID: 3985033672385363543}
+  hasDoorTag: 0
 --- !u!1 &7651183996396250129
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +563,7 @@ Transform:
   - {fileID: 4071552824077350946}
   - {fileID: 4071552823478330634}
   - {fileID: 4325284879430296813}
+  - {fileID: 4747570974740207502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -692,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door tag
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7beff0c76644c714fabfae3f109dc157, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 7beff0c76644c714fabfae3f109dc157, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.635
@@ -726,6 +794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7beff0c76644c714fabfae3f109dc157, type: 3}
+--- !u!1 &3985033672385363543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7beff0c76644c714fabfae3f109dc157, type: 3}
+  m_PrefabInstance: {fileID: 4291023154659377926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4325284879430296813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7beff0c76644c714fabfae3f109dc157, type: 3}

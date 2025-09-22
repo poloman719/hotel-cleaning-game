@@ -36,7 +36,7 @@ public class TowelBin : MonoBehaviour
 
         foreach (InventoryObject n in playerInventory.objects)
         {
-            if (n != null && n.obj.name.Contains("Dirty Towel") && hasDirtyTowel == false) //hasDirtyTowel check here to avoid running again once hasDirtyTowel == true
+            if (n != null && n.obj.name.Contains("Dirty Towel") && hasDirtyTowel == false) //hasDirtyTowel check here to avoid adding more objects once hasDirtyTowel == true
             {
                 dirtyTowels.Add(n);
                 pickUpText.color = new Color(1f, 1f, 1f, 1f);
